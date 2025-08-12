@@ -1,7 +1,54 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { Product } from "./components/Product"
 
 export function Home(){
+
+  const products = [
+    "Arroz",
+    "Feijão",
+    "Macarrão",
+    "Farinha de Trigo",
+    "Açúcar",
+    "Sal",
+    "Óleo de Soja",
+    "Leite",
+    "Ovos",
+    "Pão",
+    "Café",
+    "Chá",
+    "Manteiga",
+    "Queijo",
+    "Presunto",
+    "Frango",
+    "Carne Bovina",
+    "Peixe",
+    "Frutas",
+    "Legumes",
+    "Verduras",
+    "Batata",
+    "Cebola",
+    "Alho",
+    "Tomate",
+    "Cenoura",
+    "Banana",
+    "Maçã",
+    "Laranja",
+    "Uva",
+    "Refrigerante",
+    "Suco",
+    "Água Mineral",
+    "Biscoitos",
+    "Cereais",
+    "Molho de Tomate",
+    "Condimentos",
+    "Iogurte",
+    "Sorvete",
+    "Chocolate"
+  ];
+
+  function handleAddProduct(){
+    
+  }
 
   function handleProductRemove(name: string){
     console.log("Você clicou no botão de remover Produto + $(name)")
@@ -18,7 +65,7 @@ export function Home(){
           keyboardType="default"
           />
 
-          <TouchableOpacity style={style.button} onPress={handleProductRemove}>
+          <TouchableOpacity style={style.button} onPress={handleAddProduct}>
             <Text style={style.textButton}>+</Text>
           </TouchableOpacity>
       </View> 
@@ -29,7 +76,11 @@ export function Home(){
 
       {/*<Text style={style.listEmptyText}>Comprou todos os produtos? Adicione produtos a sua lista de compras</Text>*/}
 
-      <Product name="iPhone" onRemove={() => handleProductRemove("iPhone")}/>
+      <ScrollView>
+        {
+          products.map((product) => <Product name={product} onRemove={() => handleProductRemove(product)}/>)
+        }
+      </ScrollView>
 
       </View>
     </View>           
